@@ -8,9 +8,9 @@ const versionCodeRegexPattern = /(versionCode(?:\s|=)*)(.*)/;
 const versionNameRegexPattern = /(versionName(?:\s|=)*)(.*)/;
 
 const applicationIdRegexPattern = /(applicationId(?:\s|=)*)(.*)/;
-const keystoreAliasRegexPattern = /(applicationId(?:\s|=)*)(.*)/;
-const keystorePasswordRegexPattern = /(applicationId(?:\s|=)*)(.*)/;
-const keystoreAliasPasswordRegexPattern = /(applicationId(?:\s|=)*)(.*)/;
+const keystoreAliasRegexPattern = /(keyAlias(?:\s|=)*)(.*)/;
+const keystorePasswordRegexPattern = /(storePassword(?:\s|=)*)(.*)/;
+const keystoreAliasPasswordRegexPattern = /(keyPassword(?:\s|=)*)(.*)/;
 
 try {
     const gradlePath = core.getInput('gradlePath');
