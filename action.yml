@@ -14,6 +14,15 @@ inputs:
   applicationId:
     description: "The application id to set"
     required: false
+  keystoreAlias:
+    description: "The key store alias to set"
+    required: false
+  keystorePassword:
+    description: "The key store password to set"
+    required: false
+  keystoreAliasPassword:
+    description: "The key store alias password to set"
+    required: false
 outputs:
   result: # id of output
     description: "Action Result"
