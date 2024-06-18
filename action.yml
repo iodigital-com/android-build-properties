@@ -1,5 +1,5 @@
-name: "Increment the version code of your project"
-description: "This action will increment the version code directly in build.gradle . "
+name: "Change the gradle build parameters"
+description: "This action will change the version code, version name and application id in build.gradle . "
 inputs:
   gradlePath:
     description: "Gradle path to override version"
@@ -10,6 +10,9 @@ inputs:
     required: false
   versionName:
     description: "The new version name"
+    required: false
+  applicationId:
+    description: "The application id to set"
     required: false
 outputs:
   result: # id of output
