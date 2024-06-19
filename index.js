@@ -34,7 +34,7 @@ try {
             newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
         else
         {
-            const found = paragraph.match(versionCodeRegexPattern);
+            const found = newGradle.match(versionCodeRegexPattern);
             versionCode = found[2];
         }
 
@@ -42,7 +42,7 @@ try {
             newGradle = newGradle.replace(versionNameRegexPattern, `$1\"${versionName}\"`);
         else
         {
-            const found = paragraph.match(versionNameRegexPattern);
+            const found = newGradle.match(versionNameRegexPattern);
             versionName = found[2].replace("\"", "");
         }
 
