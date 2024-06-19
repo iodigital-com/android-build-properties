@@ -43,7 +43,7 @@ try {
         else
         {
             const found = newGradle.match(versionNameRegexPattern);
-            versionName = found[2].replace("\"", "");
+            versionName = found[2].replaceAll("\"", "");
         }
 
         if (applicationId.length > 0)

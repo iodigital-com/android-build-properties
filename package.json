@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.11",
+    "@actions/core": "^1.2.12",
     "@actions/github": "^4.0.0"
   },
   "devDependencies": {
