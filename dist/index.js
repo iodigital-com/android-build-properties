@@ -34497,17 +34497,29 @@ try {
     fs.readFile(gradlePath, 'utf8', function (err, data) {
         newGradle = data;
         if (versionCode.length > 0)
-            newGradle = newGradle.replace(versionCodeRegexPattern, `$1${versionCode}`);
+            newGradle = newGradle.replaceAll(versionCodeRegexPattern, `$1${versionCode}`);
+        else
+        {
+            const found = paragraph.match(versionCodeRegexPattern);
+            versionCode = found[2];
+        }
+
         if (versionName.length > 0)
-            newGradle = newGradle.replace(versionNameRegexPattern, `$1\"${versionName}\"`);
+            newGradle = newGradle.replaceAll(versionNameRegexPattern, `$1\"${versionName}\"`);
+        else
+        {
+            const found = paragraph.match(versionNameRegexPattern);
+            versionName = found[2].replaceAll("\"", "");
+        }
+
         if (applicationId.length > 0)
-            newGradle = newGradle.replace(applicationIdRegexPattern, `$1\"${applicationId}\"`);
+            newGradle = newGradle.replaceAll(applicationIdRegexPattern, `$1\"${applicationId}\"`);
         if (keystoreAlias.length > 0)
-            newGradle = newGradle.replace(keystoreAliasRegexPattern, `$1\"${keystoreAlias}\"`);
+            newGradle = newGradle.replaceAll(keystoreAliasRegexPattern, `$1\"${keystoreAlias}\"`);
         if (keystorePassword.length > 0)
-            newGradle = newGradle.replace(keystorePasswordRegexPattern, `$1\"${keystorePassword}\"`);
+            newGradle = newGradle.replaceAll(keystorePasswordRegexPattern, `$1\"${keystorePassword}\"`);
         if (keystoreAliasPassword.length > 0)
-            newGradle = newGradle.replace(keystoreAliasPasswordRegexPattern, `$1\"${keystoreAliasPassword}\"`);
+            newGradle = newGradle.replaceAll(keystoreAliasPasswordRegexPattern, `$1\"${keystoreAliasPassword}\"`);
         
 
         fs.writeFile(gradlePath, newGradle, function (err) {
@@ -34525,6 +34537,8 @@ try {
             if (keystoreAliasPassword.length > 0)
                 console.log(`Successfully override keystore alias password ${keystoreAliasPassword}`)
             core.setOutput("result", `Done`);
+
+            core.exportVariable("FULL_VERSION_NAME", `v${versionName}(${versionCode})`);
         });
     });
 

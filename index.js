@@ -32,8 +32,20 @@ try {
         newGradle = data;
         if (versionCode.length > 0)
             newGradle = newGradle.replaceAll(versionCodeRegexPattern, `$1${versionCode}`);
+        else
+        {
+            const found = paragraph.match(versionCodeRegexPattern);
+            versionCode = found[2];
+        }
+
         if (versionName.length > 0)
             newGradle = newGradle.replaceAll(versionNameRegexPattern, `$1\"${versionName}\"`);
+        else
+        {
+            const found = paragraph.match(versionNameRegexPattern);
+            versionName = found[2].replaceAll("\"", "");
+        }
+
         if (applicationId.length > 0)
             newGradle = newGradle.replaceAll(applicationIdRegexPattern, `$1\"${applicationId}\"`);
         if (keystoreAlias.length > 0)
@@ -59,6 +71,8 @@ try {
             if (keystoreAliasPassword.length > 0)
                 console.log(`Successfully override keystore alias password ${keystoreAliasPassword}`)
             core.setOutput("result", `Done`);
+
+            core.exportVariable("FULL_VERSION_NAME", `v${versionName}(${versionCode})`);
         });
     });
 
