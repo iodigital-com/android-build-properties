@@ -34480,8 +34480,8 @@ const keystoreAliasPasswordRegexPattern = /(keyPassword(?:\s|=)*)(.*)/;
 
 try {
     const gradlePath = core.getInput('gradlePath');
-    const versionCode = core.getInput('versionCode');
-    const versionName = core.getInput('versionName');
+    let versionCode = core.getInput('versionCode');
+    let versionName = core.getInput('versionName');
     const applicationId = core.getInput('applicationId');
     const keystoreAlias = core.getInput('keystoreAlias');
     const keystorePassword = core.getInput('keystorePassword');
